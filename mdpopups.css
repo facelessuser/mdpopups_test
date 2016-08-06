@@ -3,15 +3,20 @@
 {{'Packages/mdpopups/css/default-legacy.css'|getcss}}
 {%- else %}
 html {
-  --selection-color: var(--bluish);
+  --selection-color: color(var(--background) blend(var(--bluish) 30%));
   --header-bg: color(var(--foreground) blend(var(--background) 70%));
   --section-bg: color(var(--background) blend(var(--foreground) 70%));
   --panel-header-bg: color(var(--background) blend(var(--foreground) 70%));
   --panel-body-bg: color(var(--background) blend(var(--foreground) 30%));
+  --btn-redish: color(var(--background) blend(var(--redish) 30%));
+  --btn-orangish: color(var(--background) blend(var(--orangish) 30%));
+  --btn-bluish: color(var(--background) blend(var(--bluish) 30%));
+  --btn-greenish: color(var(--background) blend(var(--greenish) 30%));
   --btn-bg: color(var(--background) blend(var(--foreground) 50%));
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-mono: "sf mono", "Liberation Mono", Menlo, Courier, monospace;
   --font-size: 1rem;
+  --line-height: 1.2rem;
   --content-padding: 0.25rem 1rem;
   --section-padding: 0.5rem 1rem;
 
@@ -33,7 +38,8 @@ body, .mdpopups {
 }
 
 /* Block formatting */
-.mdpopups blockquote, .mdpopups ol, .mdpopups ul, .mdpopups dl, .mdpopups p, .mdpopups .highlight {
+.mdpopups blockquote, .mdpopups ol, .mdpopups ul,
+.mdpopups dl, .mdpopups p, .mdpopups .table, .mdpopups .highlight {
     padding: 0;
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
@@ -137,12 +143,12 @@ body, .mdpopups {
 .mdpopups hr {
   display: block;
   background-color: var(--section-bg);
-  padding: 1px;
-  margin: 1rem 1rem;
+  padding-top: 2px;
+  margin: 1rem 0;
 }
 
 .mdpopups .tr {
-  line-height: 42px;
+  line-height: 1.5em;
 }
 
 .mdpopups .th .tdc {
@@ -167,6 +173,8 @@ body, .mdpopups {
 }
 
 /* Lists */
+
+.mdpopups li p { margin-left: 0; }
 
 .mdpopups ul, .mdpopups ol { padding-left: 0.75rem; }
 
@@ -193,17 +201,10 @@ body, .mdpopups {
   color: inherit;
 }
 
-.mdpopups ol .selected, .mdpopups ul .selected {
+.mdpopups ol li.selected, .mdpopups ul li.selected {
   background-color: var(--selection-color);
-  color: var(--foreground);
+  color: var(--background);
 }
-
-/* I don't think this is needed.  Just wrap list item in <p>*/
-/*.list-item {
-  display: block;
-  margin: 0;
-  padding: 0.25rem 0.5rem;
-}*/
 
 /* Description list support */
 .mdpopups dl { display: block; }
@@ -243,11 +244,13 @@ body, .mdpopups {
 .mdpopups .label-large {
   font-size: 1.5rem;
   padding: 2px 8px;
+  border-radius: 5px;
 }
 
 .mdpopups .label-small {
   font-size: 0.8rem;
   padding: 2px 2px;
+  border-radius: 2px;
 }
 
 .mdpopups .label-success {
@@ -305,8 +308,34 @@ body, .mdpopups {
   color: var(--foreground);
   text-decoration: none;
   border-radius: 3px;
-  padding: 4px 20px;
+  padding: 4px 1rem;
   font-family: var(--font);
+}
+
+.mdpopups .btn-large {
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+.mdpopups .btn-small {
+  font-size: 0.8rem;
+  padding: 2px 0.8rem;
+}
+
+.mdpopups .btn-success {
+  background-color: var(--btn-greenish);
+}
+
+.mdpopups .btn-error {
+  background-color: var(--btn-redish);
+}
+
+.mdpopups .btn-warning {
+  background-color: var(--btn-orangish);
+}
+
+.mdpopups .btn-info {
+  background-color: var(--btn-bluish);
 }
 
 .mdpopups .btn-group {
@@ -329,9 +358,18 @@ body, .mdpopups {
   border-bottom-right-radius: 3px;
 }
 
-.mdpopups .btn-group .btn-selected {
+.mdpopups .btn-group .btn-group-spacer {
+  padding-right: 1px;
+}
+
+.mdpopups .btn-selected {
   background-color: var(--selection-color);
   color: var(--foreground);
+}
+
+.mdpopups .btn-primary {
+  background-color: var(--selection-color);
+  color: var(--background);
 }
 
 /* Admontions/Panels */

@@ -138,6 +138,16 @@ format_text = dedent(
     </ul>
     </div>
 
+    ## Flat List {: .header}
+
+    <div class="flat-list click-list">
+    <ul>
+    <li><a href="#">item 1</a></li>
+    <li class="selected"><a href="#">item 2</a></li>
+    <li><a href="#">item 3</a></li>
+    </ul>
+    </div>
+
     ## Blocks {: .header}
 
         Indented code block
@@ -228,7 +238,7 @@ def on_close_phantom(href):
 def show_popup(text):
     """Show the popup."""
     clear_cache()
-    close = '\n[close](#){: .btn .bg-bluish}\n'
+    close = '\n[close](#){: .btn .btn-small .btn-info}\n'
     view = active_view()
     region = view.visible_region()
     mdpopups.show_popup(
@@ -240,7 +250,7 @@ def show_popup(text):
 def show_phantom(text):
     """Show the phantom."""
     clear_cache()
-    close = '\n[close](#){: .btn .bg-bluish}\n'
+    close = '\n[close](#){: .btn .btn-small .btn-info}\n'
     view = active_view()
     region = view.visible_region()
     mdpopups.add_phantom(
