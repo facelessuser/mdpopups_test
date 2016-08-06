@@ -157,7 +157,27 @@ format_text = dedent(
 
     ## Admonition {: .header}
 
-    !!! caution "Admonition Title"
+    !!! panel "Admonition Title"
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
+    laboris nisi ut aliquip ex ea commodo consequat...
+
+    !!! panel-success "Success!"
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
+    laboris nisi ut aliquip ex ea commodo consequat...
+
+    !!! panel-warning "Warning!"
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
+    laboris nisi ut aliquip ex ea commodo consequat...
+
+    !!! panel-error "Error!"
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
+    laboris nisi ut aliquip ex ea commodo consequat...
+
+    !!! panel-info "Info"
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
     laboris nisi ut aliquip ex ea commodo consequat...

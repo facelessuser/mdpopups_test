@@ -357,6 +357,38 @@ body, .mdpopups {
   padding: 0.25rem 0.5rem;
 }
 
+.mdpopups .admonition.panel-success .admonition-title {
+  background-color: color(var(--background) blend(var(--greenish) 70%));
+}
+
+.mdpopups .admonition.panel-success {
+  background-color: color(var(--background) blend(var(--greenish) 30%));
+}
+
+.mdpopups .admonition.panel-warning .admonition-title {
+  background-color: color(var(--background) blend(var(--orangish) 70%));
+}
+
+.mdpopups .admonition.panel-warning {
+  background-color: color(var(--background) blend(var(--orangish) 30%));
+}
+
+.mdpopups .admonition.panel-error .admonition-title {
+  background-color: color(var(--background) blend(var(--redish) 70%));
+}
+
+.mdpopups .admonition.panel-error {
+  background-color: color(var(--background) blend(var(--redish) 30%));
+}
+
+.mdpopups .admonition.panel-info .admonition-title {
+  background-color: color(var(--background) blend(var(--bluish) 70%));
+}
+
+.mdpopups .admonition.panel-info {
+  background-color: color(var(--background) blend(var(--bluish) 30%));
+}
+
 /* Code */
 {%- if var.use_pygments %}
   {%- if var.is_light %}
