@@ -25,18 +25,20 @@ this = sys.modules[__name__]
 
 format_text = dedent(
     '''
-    # Test Output - H1
-    ## Headers - H2
+    # Test Output {: .section}
+    ## Headers {: .header}
+    # H1
+    ## H2
     ### H3
     #### H4
     ##### H5
     ###### H6
 
-    ## Horizontal Ruler
+    ## Horizontal Ruler {: .header}
 
     ---
 
-    ## Paragraphs
+    ## Paragraphs {: .header}
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
     laboris nisi ut aliquip ex ea commodo consequat...
@@ -44,7 +46,7 @@ format_text = dedent(
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
 
-    ## Inline
+    ## Inline {: .header}
     Inline **bold**.
 
     Inline *italic*.
@@ -55,21 +57,21 @@ format_text = dedent(
 
     [mdpopups link](https://github.com/facelessuser/sublime-markdown-popups)
 
-    ## Quotes
+    ## Quotes {: .header}
 
     > Here is a quote.
     > About something.
 
-    ## Definition Lists
+    ## Definition Lists {: .header}
 
-    Apple
+    Apple {: .header}
     : 1) The round fruit of a tree of the rose family, which typically has thin red or green skin and crisp flesh.
 
         Many varieties have been developed as dessert or cooking fruit or for making cider.
 
     : 2) The tree which bears apples.
 
-    ## Table
+    ## Table {: .header}
 
     <div class="table">
       <div class="tr th">
@@ -94,7 +96,7 @@ format_text = dedent(
       </div>
     </div>
 
-    ## Normal Lists
+    ## Normal Lists {: .header}
     - Fruit
         - Apples
         - Bannanas
@@ -113,7 +115,7 @@ format_text = dedent(
 
         3. item 3
 
-    ## No Bullet List
+    ## No Bullet List {: .header}
 
     <div class="no-bullets click-list">
     <ul>
@@ -126,7 +128,7 @@ format_text = dedent(
     </ul>
     </div>
 
-    ## No Bullet Flat List
+    ## No Bullet Flat List {: .header}
 
     <div class="no-bullets flat-list click-list">
     <ul>
@@ -136,7 +138,7 @@ format_text = dedent(
     </ul>
     </div>
 
-    ## Blocks
+    ## Blocks {: .header}
 
         Indented code block
         goes here
@@ -153,10 +155,12 @@ format_text = dedent(
         import awesome
         ```
 
-    ## Admonition
+    ## Admonition {: .header}
 
     !!! caution "Admonition Title"
-        Admonition content.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
+    laboris nisi ut aliquip ex ea commodo consequat...
 
     '''
 )
