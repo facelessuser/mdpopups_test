@@ -13,14 +13,14 @@ html {
   --btn-bluish: color(var(--background) blend(var(--bluish) 30%));
   --btn-greenish: color(var(--background) blend(var(--greenish) 30%));
   --btn-bg: color(var(--background) blend(var(--foreground) 50%));
-  --font: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-mono: "sf mono", "Liberation Mono", Menlo, Courier, monospace;
+  /*--font: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+  /*--font-mono: "sf mono", "Liberation Mono", Menlo, Courier, monospace;*/
   --font-size: 1rem;
   --line-height: 1.2rem;
   --content-padding: 0.25rem 1rem;
   --section-padding: 0.5rem 1rem;
 
-  font-size: var(--font-size);
+  /*font-size: var(--font-size);*/
 }
 
 /*
@@ -31,7 +31,7 @@ Maybe I should wrap mdpopup content in a div instead...
 body, .mdpopups {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font);
+  /*font-family: var(--font);*/
   font-size: var(--font-size);
   margin: 0;
   padding: 0;
@@ -82,12 +82,12 @@ body, .mdpopups {
 }
 
 .mdpopups a {
-  font-family: var(--font);
+  /*font-family: var(--font);*/
   color: var(--bluish);
   text-decoration: underline;
 }
 
-.mdpopups code {
+/*.mdpopups code {
   font-family: var(--font-mono);
 }
 
@@ -97,7 +97,7 @@ body, .mdpopups {
 
 .mdpopups var {
   font-family: var(--font-mono);
-}
+}*/
 
 /* Color Box */
 .mdpopups .rounded-box .box {border-radius: 1000px;}
@@ -106,14 +106,14 @@ body, .mdpopups {
 .mdpopups .rounded-box .box-wrapper2 {border-radius: 1000px;}
 
 .mdpopups .box {
-  font-family: var(--font-mono);
+  /*font-family: var(--font-mono);*/
   padding: 0 5px 0 5px;
   line-height: 24px;
   font-size: 24px;
 }
 
 .mdpopups .box-wrapper {
-  font-family: var(--font-mono);
+  /*font-family: var(--font-mono);*/
   padding: 1px;
   background-color: var(--btn-bg);
   font-size: 24px;
@@ -121,7 +121,7 @@ body, .mdpopups {
 }
 
 .mdpopups .box-wrapper1 {
-  font-family: var(--font-mono);
+  /*font-family: var(--font-mono);*/
   padding: 1px;
   background-color: var(--btn-bg);
   font-size: 25px;
@@ -129,7 +129,7 @@ body, .mdpopups {
 }
 
 .mdpopups .box-wrapper2 {
-  font-family: var(--font-mono);
+  /*font-family: var(--font-mono);*/
   background-color: var(--background);
   padding: 1px;
   font-size: 24px;
@@ -166,7 +166,7 @@ body, .mdpopups {
   padding-right: 1px;
   padding-bottom: 1px;
   padding-top: 1px;
-  font-family: var(--font-mono);
+  /*font-family: var(--font-mono);*/
 }
 
 .mdpopups .td-first {
@@ -182,7 +182,7 @@ body, .mdpopups {
 
 .mdpopups li p { margin-left: 0; }
 
-.mdpopups ul, .mdpopups ol { padding-left: 0.75rem; }
+.mdpopups ul, .mdpopups ol { margin: 1em; padding-left: 0.75rem; }
 
 .mdpopups .no-bullets ol, .mdpopups .no-bullets ul {
   margin-left: 0;
@@ -241,7 +241,7 @@ body, .mdpopups {
 /* Labels */
 .mdpopups .label {
   border-radius: 3px;
-  padding: 2px 4px;
+  padding: 2px 6px;
   font-size: 1rem;
   color: var(--background);
   background-color: var(--foreground);
@@ -249,13 +249,13 @@ body, .mdpopups {
 
 .mdpopups .label-large {
   font-size: 1.5rem;
-  padding: 2px 8px;
+  padding: 2px 12px;
   border-radius: 5px;
 }
 
 .mdpopups .label-small {
   font-size: 0.8rem;
-  padding: 2px 2px;
+  padding: 2px 5px;
   border-radius: 2px;
 }
 
@@ -315,7 +315,7 @@ body, .mdpopups {
   text-decoration: none;
   border-radius: 3px;
   padding: 4px 1rem;
-  font-family: var(--font);
+  /*font-family: var(--font);*/
 }
 
 .mdpopups .btn-large {

@@ -150,7 +150,7 @@ format_text = dedent(
 
     ## Blocks {: .header}
 
-        Indented code block
+        Indented code   block
         goes here
 
     ```python
