@@ -13,7 +13,7 @@ html {
   --btn-bluish: color(var(--background) blend(var(--bluish) 30%));
   --btn-greenish: color(var(--background) blend(var(--greenish) 30%));
   --btn-bg: color(var(--background) blend(var(--foreground) 50%));
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-mono: "sf mono", "Liberation Mono", Menlo, Courier, monospace;
   --font-size: 1rem;
   --line-height: 1.2rem;
@@ -100,6 +100,11 @@ body, .mdpopups {
 }
 
 /* Color Box */
+.mdpopups .rounded-box .box {border-radius: 1000px;}
+.mdpopups .rounded-box .box-wrapper {border-radius: 1000px;}
+.mdpopups .rounded-box .box-wrapper1 {border-radius: 1000px;}
+.mdpopups .rounded-box .box-wrapper2 {border-radius: 1000px;}
+
 .mdpopups .box {
   font-family: var(--font-mono);
   padding: 0 5px 0 5px;
@@ -138,6 +143,7 @@ body, .mdpopups {
 /* Table */
 .table {
   padding: var(--content-padding);
+  padding-right: 0px;
 }
 
 .mdpopups hr {
@@ -148,7 +154,7 @@ body, .mdpopups {
 }
 
 .mdpopups .tr {
-  line-height: 1.5em;
+  line-height: 2em;
 }
 
 .mdpopups .th .tdc {
