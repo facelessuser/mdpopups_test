@@ -22,13 +22,14 @@ html {
 
   /*font-size: var(--font-size);*/
 }
+body { margin: 0; padding: 0; }
 
 /*
 For some reason, Sublime isn't catching .mdpopups class in body.
 Maybe I've been mistaken and it never catches it there.
 Maybe I should wrap mdpopup content in a div instead...
 */
-body, .mdpopups {
+.mdpopups {
   background-color: var(--background);
   color: var(--foreground);
   /*font-family: var(--font);*/
