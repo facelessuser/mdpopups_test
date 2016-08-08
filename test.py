@@ -25,8 +25,8 @@ this = sys.modules[__name__]
 
 format_text = dedent(
     '''
-    # Test Output {: .section}
-    ## Headers {: .header}
+    # Test Output {: .header}
+    ## Headers {: .section}
     # H1
     ## H2
     ### H3
@@ -34,19 +34,19 @@ format_text = dedent(
     ##### H5
     ###### H6
 
-    ## Horizontal Ruler {: .header}
+    ## Horizontal Ruler {: .section}
 
     ---
 
-    ## Paragraphs {: .header}
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
+    ## Paragraphs {: .section}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
     laboris nisi ut aliquip ex ea commodo consequat...
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 
-    ## Inline {: .header}
+    ## Inline {: .section}
     Inline **bold**.
 
     Inline *italic*.
@@ -57,21 +57,21 @@ format_text = dedent(
 
     [mdpopups link](https://github.com/facelessuser/sublime-markdown-popups)
 
-    ## Quotes {: .header}
+    ## Quotes {: .section}
 
-    > Here is a quote.
+    > Here is a quote.  
     > About something.
 
-    ## Definition Lists {: .header}
+    ## Definition Lists {: .section}
 
-    Apple {: .header}
+    Apple
     : 1) The round fruit of a tree of the rose family, which typically has thin red or green skin and crisp flesh.
 
         Many varieties have been developed as dessert or cooking fruit or for making cider.
 
     : 2) The tree which bears apples.
 
-    ## Table {: .header}
+    ## Table {: .section}
 
     <div class="table">
       <div class="tr th">
@@ -95,8 +95,30 @@ format_text = dedent(
         <span class="td"><span class="tdc">Col3</span></span>
       </div>
     </div>
+    <div class="table-hlines">
+      <div class="tr th">
+        <span class="td"><span class="tdc">First Row&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+        <span class="td"><span class="tdc">Col2</span></span>
+        <span class="td"><span class="tdc">Col3</span></span>
+      </div>
+      <div class="tr">
+        <span class="td"><span class="tdc">This is Second Row&nbsp;</span></span>
+        <span class="td"><span class="tdc">Col2</span></span>
+        <span class="td"><span class="tdc">Col3</span></span>
+      </div>
+      <div class="tr">
+        <span class="td"><span class="tdc">Third Row&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+        <span class="td"><span class="tdc">Col2</span></span>
+        <span class="td"><span class="tdc">Col3</span></span>
+      </div>
+      <div class="tr">
+        <span class="td"><span class="tdc">Even Fourth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+        <span class="td"><span class="tdc">Col2</span></span>
+        <span class="td"><span class="tdc">Col3</span></span>
+      </div>
+    </div>
 
-    ## Normal Lists {: .header}
+    ## Normal Lists {: .section}
     - Fruit
         - Apples
         - Bannanas
@@ -111,44 +133,63 @@ format_text = dedent(
     1. Lists With Paragraphs
         1. item 1
 
+            More from Item 1.
+
         2. item 2
 
         3. item 3
 
-    ## No Bullet List {: .header}
+    ## No Bullet List {: .section}
 
-    <div class="no-bullets click-list">
-    <ul>
-    <li class="selected"><a href="#">Lists with block items</a></li>
-    <ul>
-    <li><a href="#">item 1</a></li>
-    <li class="selected"><a href="#">item 2</a></li>
-    <li><a href="#">item 3</a></li>
+    <div class="no-bullets" markdown="1">
+    - [Lists with block items](#)
+        - [Item 1](#)
+        - [Item 2](#)
+        - [Item 3](#)
+    </div>
+
+    ## List Group {: .section}
+
+    <p class="md-list-group" markdown="1">
+    <ul class="list-group" markdown="1">
+    <li class="list-item">[Normal Item](#)</li>
+    <li class="list-item selected">[This is the Selected item](#)</li>
+    <li class="list-item fg-bluish">[Info](#)</li>
+    <li class="list-item fg-greenish">[Success](#)</li>
+    <li class="list-item fg-orangish">[Warning](#)</li>
+    <li class="list-item fg-redish">[Error](#)</li>
     </ul>
+    </p>
+
+    ## Colors {: .section}
+
+    <div class="content">
+    <ul class="no-bullets">
+    <li class="fg-foreground">foreground</li>
+    <li class="fg-redish">redish</li>
+    <li class="fg-orangish">orangish</li>
+    <li class="fg-yellowish">yellowish</li>
+    <li class="fg-greenish">greenish</li>
+    <li class="fg-bluish">bluish</li>
+    <li class="fg-purplish">purplish</li>
+    <li class="fg-pinkish">pinkish</li>
     </ul>
     </div>
 
-    ## No Bullet Flat List {: .header}
-
-    <div class="no-bullets flat-list click-list">
-    <ul>
-    <li><a href="#">item 1</a></li>
-    <li class="selected"><a href="#">item 2</a></li>
-    <li><a href="#">item 3</a></li>
+    <div class="content">
+    <ul class="fg-background no-bullets">
+    <li class="bg-foreground">foreground</li>
+    <li class="bg-redish">redish</li>
+    <li class="bg-orangish">orangish</li>
+    <li class="bg-yellowish">yellowish</li>
+    <li class="bg-greenish">greenish</li>
+    <li class="bg-bluish">bluish</li>
+    <li class="bg-purplish">purplish</li>
+    <li class="bg-pinkish">pinkish</li>
     </ul>
     </div>
 
-    ## Flat List {: .header}
-
-    <div class="flat-list click-list">
-    <ul>
-    <li><a href="#">item 1</a></li>
-    <li class="selected"><a href="#">item 2</a></li>
-    <li><a href="#">item 3</a></li>
-    </ul>
-    </div>
-
-    ## Blocks {: .header}
+    ## Blocks {: .section}
 
         Indented code   block
         goes here
@@ -165,32 +206,115 @@ format_text = dedent(
         import awesome
         ```
 
-    ## Admonition {: .header}
+    ## Admonition {: .section}
 
     !!! panel "Admonition Title"
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-    laboris nisi ut aliquip ex ea commodo consequat...
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat...
 
     !!! panel-success "Success!"
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-    laboris nisi ut aliquip ex ea commodo consequat...
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat...
 
     !!! panel-warning "Warning!"
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-    laboris nisi ut aliquip ex ea commodo consequat...
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat...
 
     !!! panel-error "Error!"
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-    laboris nisi ut aliquip ex ea commodo consequat...
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat...
 
     !!! panel-info "Info"
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-    laboris nisi ut aliquip ex ea commodo consequat...
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat...
+
+    !!! panel-info "Info"
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat...
+
+    ## Color Boxes {: .section}
+
+    <div class="content">
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-bluish fg-bluish">.</span></span></span>
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-orangish fg-orangish">.</span></span></span>
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-greenish fg-greenish">.</span></span></span>
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-yellowish fg-yellowish">.</span></span></span>
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-purplish fg-purplish">.</span></span></span>
+    </div>
+
+    <div class="content">
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-bluish fg-bluish">.</span></span></span></span>
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-orangish fg-orangish">.</span></span></span></span>
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-greenish fg-greenish">.</span></span></span></span>
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-yellowish fg-yellowish">.</span></span></span></span>
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-purplish fg-purplish">.</span></span></span></span>
+    </div>
+
+    <div class="content rounded-box">
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-bluish fg-bluish">.</span></span></span>
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-orangish fg-orangish">.</span></span></span>
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-greenish fg-greenish">.</span></span></span>
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-yellowish fg-yellowish">.</span></span></span>
+    <span class="box-spacer"><span class="box-wrapper"><span class="box bg-purplish fg-purplish">.</span></span></span>
+    </div>
+
+    <div class="content rounded-box">
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-bluish fg-bluish">.</span></span></span></span>
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-orangish fg-orangish">.</span></span></span></span>
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-greenish fg-greenish">.</span></span></span></span>
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-yellowish fg-yellowish">.</span></span></span></span>
+    <span class="box-spacer"><span class="box-wrapper1"><span class="box-wrapper2"><span class="box bg-purplish fg-purplish">.</span></span></span></span>
+    </div>
+
+    ## Buttons {: .section}
+
+    <p class="md-list-group" markdown="1">
+    <div class="content" markdown="1">
+    [Ok](#){: .btn}&nbsp;[Cancel](#){: .btn}
+    </div>
+    </p>
+
+    <p class="md-list-group" markdown="1">
+    <div class="content" markdown="1">
+    [Large](#){: .btn .btn-large}
+    </div>
+    </p>
+
+    <p class="md-list-group" markdown="1">
+    <div class="content" markdown="1">
+    [Small](#){: .btn .btn-small}&nbsp;[Small Active](#){: .btn .btn-small .btn-selected}
+    </div>
+    </p>
+
+    <p class="md-list-group" markdown="1">
+    <div class="content" markdown="1">
+    [Info](#){: .btn .btn-info}&nbsp;[Error](#){: .btn .btn-error}&nbsp;[Warning](#){: .btn .btn-warning}&nbsp;[Success](#){: .btn .btn-success}
+    </div>
+    </p>
+
+    <p class="md-list-group" markdown="1">
+    <div class="content btn-group" markdown="1">
+    <span class="btn-group-spacer">[One](#){: .btn .btn-left}</span>
+    <span class="btn-group-spacer">[Two](#){: .btn}</span>
+    <span class="btn-group-spacer">[Three](#){: .btn .btn-selected}</span>
+    <span class="btn-group-spacer">[Four](#){: .btn .btn-right}</span>
+    </div>
+    </p>
+
+    <p class="md-list-group" markdown="1">
+    <div class="content btn-group" markdown="1">
+    <span class="btn-group-spacer">[One](#){: .btn .btn-small .btn-left}</span>
+    <span class="btn-group-spacer">[Two](#){: .btn .btn-small .btn-error}</span>
+    <span class="btn-group-spacer">[Three](#){: .btn .btn-small}</span>
+    <span class="btn-group-spacer">[Four](#){: .btn .btn-small .btn-selected .btn-right}</span>
+    </div>
+    </p>
 
     '''
 )
@@ -243,7 +367,7 @@ def show_popup(text):
     region = view.visible_region()
     mdpopups.show_popup(
         active_view(), text + close, location=region.a, on_navigate=on_close_popup,
-        max_height=512, max_width=512
+        max_height=512, max_width=512, nl2br=False
     )
 
 

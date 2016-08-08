@@ -1,8 +1,9 @@
 /*Style with current theme.*/
-{%- if var.sublime_version < 3119 %}
-{{'Packages/mdpopups/css/default-legacy.css'|getcss}}
-{%- else %}
+html, body { margin: 0; padding: 0; }
+
+/* Setup variables */
 html {
+  --adjusted-background: color(var(--background) blend(white 98%));
   --selection-color: color(var(--background) blend(var(--bluish) 30%));
   --header-bg: color(var(--foreground) blend(var(--background) 70%));
   --section-bg: color(var(--background) blend(var(--foreground) 70%));
@@ -16,41 +17,51 @@ html {
   /*--font: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
   /*--font-mono: "sf mono", "Liberation Mono", Menlo, Courier, monospace;*/
   --font-size: 1rem;
-  --line-height: 1.2rem;
+  --line-height: 1.1rem;
   --content-padding: 0.25rem 1rem;
   --section-padding: 0.5rem 1rem;
+  --block-padding: 0 1rem;
+  --block-margins: 0 0 0.5rem 0;
 
   /*font-size: var(--font-size);*/
 }
-body { margin: 0; padding: 0; }
 
-/*
-For some reason, Sublime isn't catching .mdpopups class in body.
-Maybe I've been mistaken and it never catches it there.
-Maybe I should wrap mdpopup content in a div instead...
-*/
+/* Set base style */
 .mdpopups {
-  background-color: var(--background);
-  color: var(--foreground);
   /*font-family: var(--font);*/
+  background-color: var(--adjusted-background);
+  color: var(--foreground);
   font-size: var(--font-size);
   margin: 0;
   padding: 0;
 }
 
-/* Block formatting */
-.mdpopups blockquote, .mdpopups ol, .mdpopups ul,
-.mdpopups dl, .mdpopups p, .mdpopups .table, .mdpopups .highlight {
-    padding: 0;
-    margin-top: 0.25rem;
-    margin-bottom: 0.5rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+.content {
+  padding: var(--content-padding);
 }
 
-.mdpopups blockquote { display: block; font-style: italic; }
+/* Block formatting */
 
-.mdpopups pre { display: block; }
+.mdpopups .highlight {
+  margin: var(--block-margins);
+}
+
+.mdpopups p {
+  padding: var(--block-padding);
+  margin: var(--block-margins);
+}
+
+.mdpopups blockquote {
+  padding: 0 2rem 0 1rem;
+  margin: var(--block-margins);
+  display: block;
+  font-style: italic;
+}
+
+.mdpopups pre {
+  /*font-family: var(--font-mono);*/
+  display: block;
+}
 
 /* Inline formatting */
 .mdpopups h1 { font-size: 1.5rem; }
@@ -60,25 +71,20 @@ Maybe I should wrap mdpopup content in a div instead...
 .mdpopups h5 { font-size: 1.1rem; }
 .mdpopups h6 { font-size: 1rem; }
 .mdpopups h1, .mdpopups h2, .mdpopups h3, .mdpopups h4, .mdpopups h5, .mdpopups h6 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 0.2rem;
-  margin-bottom: 0.5rem;
+  padding: var(--content-padding);
+  margin: var(--block-margins);
 }
 
-.mdpopups h1.section {
+.mdpopups .section {
   font-size: 1.1rem;
   font-weight: 400;
   background-color: var(--section-bg);
-  padding: var(--section-padding);
-  margin: 0;
 }
 
-.mdpopups h2.header {
+.mdpopups .header {
   font-size: 1.25rem;
   background-color: var(--header-bg);
   color: var(--background);
-  padding: var(--content-padding);
   margin: 0;
 }
 
@@ -88,15 +94,8 @@ Maybe I should wrap mdpopup content in a div instead...
   text-decoration: underline;
 }
 
-/*.mdpopups code {
-  font-family: var(--font-mono);
-}
-
-.mdpopups tt {
-  font-family: var(--font-mono);
-}
-
-.mdpopups var {
+/* Code blocks */
+/*.mdpopups code, .mdpopups tt, .mdpopups var {
   font-family: var(--font-mono);
 }*/
 
@@ -131,7 +130,7 @@ Maybe I should wrap mdpopup content in a div instead...
 
 .mdpopups .box-wrapper2 {
   /*font-family: var(--font-mono);*/
-  background-color: var(--background);
+  background-color: var(--adjusted-background);
   padding: 1px;
   font-size: 24px;
   line-height: 24px;
@@ -143,7 +142,12 @@ Maybe I should wrap mdpopup content in a div instead...
 
 /* Table */
 .table {
-  padding: var(--content-padding);
+  padding: var(--block-padding);
+  margin: var(--block-margins);
+}
+
+.table-hlines {
+  margin: var(--block-margins);
   padding-right: 0px;
 }
 
@@ -175,67 +179,69 @@ Maybe I should wrap mdpopup content in a div instead...
 }
 
 .mdpopups .tdc {
-  background-color: var(--background);
+  background-color: var(--adjusted-background);
   padding: 0 12px;
 }
 
 /* Lists */
-
-.mdpopups li p { margin-left: 0; }
-
-.mdpopups ul, .mdpopups ol { margin: 1em; padding-left: 0.75rem; }
-
-.mdpopups .no-bullets ol, .mdpopups .no-bullets ul {
-  margin-left: 0;
-  padding-left: 1.25rem;
-}
-
-.mdpopups .no-bullets li {
-  display: block;
-}
-
-.mdpopups .flat-list ol, .mdpopups .flat-list ul {
+.mdpopups .no-bullets {
   margin: 0;
   padding: 0;
 }
 
-.mdpopups .no-bullets.flat-list li {
-  padding-left: 0.5rem;
+.mdpopups .no-bullets li {
+  display: block;
+  margin: 0;
 }
 
-.mdpopups .click-list a {
+.mdpopups .list-group {
+  margin: 0;
+  padding: 0;
+}
+
+.mdpopups .list-item {
+  display: block;
+  margin: 0;
+  padding: 0.25rem 1rem;
+}
+
+.mdpopups .list-item a {
   text-decoration: none;
   color: inherit;
 }
 
-.mdpopups ol li.selected, .mdpopups ul li.selected {
+.mdpopups p.md-list-group {
+  padding-left: 0;
+}
+
+.mdpopups .list-group .selected {
   background-color: var(--selection-color);
   color: var(--background);
 }
 
-/* Description list support */
+/* Definition list support */
 .mdpopups dl { display: block; }
 .mdpopups dt {
     display: block;
     font-style: italic;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    padding: 0 1rem;
+    margin: 0 0 0.5rem 0;
 }
 .mdpopups dd {
     display: block;
-    margin-left: 1.5rem;
+    margin-left: 2rem;
     margin-bottom: 0.5rem;
 }
 
-/* Icons (unstable) */
-
-/*.mdpopups .icon {
-  font-family: "material icons";
+/* Icons */
+.mdpopups .icon {
+  /*font-family: "material icons";*/
   position: relative;
   top: 0.125rem;
 }
 
-.mdpopups .icon-24px {
+/*.mdpopups .icon-24px {
   font-size: 24px;
 }*/
 
@@ -311,12 +317,12 @@ Maybe I should wrap mdpopup content in a div instead...
 
 /* Buttons */
 .mdpopups .btn {
+  /*font-family: var(--font);*/
   background-color: var(--btn-bg);
   color: var(--foreground);
   text-decoration: none;
   border-radius: 3px;
   padding: 4px 1rem;
-  /*font-family: var(--font);*/
 }
 
 .mdpopups .btn-large {
@@ -379,10 +385,31 @@ Maybe I should wrap mdpopup content in a div instead...
   color: var(--background);
 }
 
+/* Syntax Highlighted Code blocks */
+{%- if var.use_pygments %}
+  {%- if var.is_light %}
+{{'default'|pygments}}
+  {%- else %}
+{{'native'|pygments}}
+  {% endif %}
+{%- else %}
+.mdpopups .highlight {
+    background-color: color(var(--background) blend(var(--foreground) 95%));
+}
+
+.mdpopups .inline-highlight { background-color: color(var(--background) blend(var(--foreground) 95%)); }
+{%- endif %}
+.mdpopups .highlight {
+  margin: 0 1rem 0.5rem 1rem;
+  padding: var(--content-padding);
+  border-radius: 6px;
+}
+.mdpopups .inline-highlight { border-radius: 3px; }
+
 /* Admontions/Panels */
 .mdpopups .admonition {
   display: block;
-  margin: 6px;
+  margin: 0 1rem 0.5rem 1rem;
   padding: 0;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -398,10 +425,10 @@ Maybe I should wrap mdpopup content in a div instead...
   border-top-right-radius: 6px;
   font-weight: 600;
   font-size: 1.1rem;
-  margin: 0;
-  padding: 0.25rem 0.5rem;
+  margin: var(--block-margins);
 }
 
+/* Colorized Admonitions classes. */
 .mdpopups .admonition.panel-success .admonition-title {
   background-color: color(var(--background) blend(var(--greenish) 70%));
 }
@@ -434,30 +461,8 @@ Maybe I should wrap mdpopup content in a div instead...
   background-color: color(var(--background) blend(var(--bluish) 30%));
 }
 
-/* Code */
-{%- if var.use_pygments %}
-  {%- if var.is_light %}
-{{'default'|pygments}}
-  {%- else %}
-{{'native'|pygments}}
-  {% endif %}
-.mdpopups .highlight {
-    padding: var(--content-padding);
-    border-radius: 6px;
-}
-.mdpopups .inline-highlight { border-radius: 3px; }
-{%- else %}
-.mdpopups .highlight {
-    background-color: color(var(--background) blend(var(--foreground) 95%));
-    padding: var(--content-padding);
-    border-radius: 6px;
-}
-.mdpopups .inline-highlight { background-color: color(var(--background) blend(var(--foreground) 95%)); }
-.mdpopups .inline-highlight { border-radius: 3px; }
-{%- endif %}
-{%- endif %}
-
 /* General colors */
+.mdpopups .fg-adjusted-background{ color: var(--adjusted-background); }
 .mdpopups .fg-background { color: var(--background); }
 .mdpopups .fg-foreground { color: var(--foreground); }
 .mdpopups .fg-redish     { color: var(--redish);     }
@@ -468,6 +473,7 @@ Maybe I should wrap mdpopup content in a div instead...
 .mdpopups .fg-purplish   { color: var(--purplish);   }
 .mdpopups .fg-pinkish    { color: var(--pinkish);    }
 
+.mdpopups .bg-adjusted-background{ color: var(--adjusted-background); }
 .mdpopups .bg-background { background-color: var(--background); }
 .mdpopups .bg-foreground { background-color: var(--foreground); }
 .mdpopups .bg-redish     { background-color: var(--redish);     }
