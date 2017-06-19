@@ -1,6 +1,6 @@
 [
     {
-        "caption": "Mdpopups: Test Bootstrap",
-        "command": "mdpopups_bootstrap"
+        "caption": "Mdpopups: Test",
+        "command": "mdpopups_test"
     }
 ]

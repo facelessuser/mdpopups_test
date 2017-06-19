@@ -1,12 +1,5 @@
 # mdpopup_test
 
-![img](screencap.png)
+![img](tooltips_test.png)
 
-Preferences
-
-```
-"mdpopups.default_formatting": false,
-"mdpopups.user_css": "Packages/mdpopup_test/mdpopups.css",
-```
-
-Need Mdpopups 1.10.0
+Need Mdpopups 2.1.0+
