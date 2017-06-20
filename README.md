@@ -8,7 +8,7 @@ Run command `Mdpopups: Test` and choose either popup or phantom.  This demonstra
 
 -- or --
 
-Run command `Mdpopups: Test UML` and choose either popup or phantom.  This demonstrates custom fences using UML.  This assumes Java is found in your path.
+Run command `Mdpopups: Test UML` and choose either popup or phantom.  This demonstrates custom fences using UML. Requires Java and Graphviz to be installed and in your path. See http://plantuml.com/starting.
 
 Edit `test.py` to play around with the commands.
 
