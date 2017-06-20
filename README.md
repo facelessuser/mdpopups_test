@@ -2,6 +2,8 @@
 
 ![img](tooltips_test.png)
 
+![img](tooltips_uml_test.png)
+
 Run command `Mdpopups: Test` and choose either popup or phantom.  This demonstrates basic formatting.
 
 -- or --
