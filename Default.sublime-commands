@@ -2,5 +2,9 @@
     {
         "caption": "Mdpopups: Test",
         "command": "mdpopups_test"
+    },
+    {
+        "caption": "Mdpopups: Test UML",
+        "command": "mdpopups_test_uml"
     }
 ]

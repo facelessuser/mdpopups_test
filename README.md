@@ -2,7 +2,11 @@
 
 ![img](tooltips_test.png)
 
-Run command `Mdpopups: test` and choose either popup or phantom.
+Run command `Mdpopups: Test` and choose either popup or phantom.  This demonstrates basic formatting.
+
+-- or --
+
+Run command `Mdpopups: Test UML` and choose either popup or phantom.  This demonstrates custom fences using UML.  This assumes Java is found in your path.
 
 Edit `test.py` to play around with the commands.
 

@@ -20,9 +20,11 @@ import sublime
 import sublime_plugin
 import mdpopups
 import sys
+from . import plantuml
 this = sys.modules[__name__]
 
 TEST_MD = "Packages/mdpopup_test/test.md"
+TEST_UML_MD = "Packages/mdpopup_test/test_uml.md"
 
 frontmatter = {
     "markdown_extensions": [
@@ -47,6 +49,12 @@ frontmatter = {
     ]
 }
 
+frontmatter_uml = {
+    "custom_fences": [
+        {'name': 'uml', 'class': 'uml', 'format': plantuml.uml_format}
+    ]
+}
+
 
 def active_view():
     """Get active view."""
@@ -58,21 +66,21 @@ def clear_cache():
     mdpopups.clear_cache()
 
 
-def menu():
+def menu(fmatter, md_file):
     """Show menu allowing you to select a test."""
     tests = (
         "Popup Format",
         "Phantom Format"
     )
 
-    def run_test(value):
+    def run_test(value, fm, md):
         """Run the test."""
         if value >= 0:
             test = '_'.join(tests[value].lower().split(' '))
-            getattr(this, 'mdpopups_%s_test' % test)()
+            getattr(this, 'mdpopups_%s_test' % test)(fm, md)
 
     window = active_view().window()
-    window.show_quick_panel(tests, run_test)
+    window.show_quick_panel(tests, lambda v, fm=fmatter, md=md_file: run_test(v, fm, md))
 
 
 def on_close_popup(href):
@@ -112,16 +120,16 @@ def show_phantom(text):
     )
 
 
-def mdpopups_popup_format_test():
+def mdpopups_popup_format_test(fm, md):
     """Test popup."""
 
-    show_popup(mdpopups.format_frontmatter(frontmatter) + sublime.load_resource(TEST_MD))
+    show_popup(mdpopups.format_frontmatter(fm) + sublime.load_resource(md))
 
 
-def mdpopups_phantom_format_test():
+def mdpopups_phantom_format_test(fm, md):
     """Test phantom."""
 
-    show_phantom(mdpopups.format_frontmatter(frontmatter) + sublime.load_resource(TEST_MD))
+    show_phantom(mdpopups.format_frontmatter(fm) + sublime.load_resource(md))
 
 
 class MdpopupsTestCommand(sublime_plugin.TextCommand):
@@ -130,4 +138,12 @@ class MdpopupsTestCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         """Run command."""
 
-        menu()
+        menu(frontmatter, TEST_MD)
+
+class MdpopupsTestUmlCommand(sublime_plugin.TextCommand):
+    """Test UML command."""
+
+    def run(self, edit):
+        """Run command."""
+
+        menu(frontmatter_uml, TEST_UML_MD)
