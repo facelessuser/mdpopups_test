@@ -38,7 +38,8 @@ frontmatter = {
         {
             "pymdownx.magiclink": {
                 "repo_url_shortener": True,
-                "base_repo_url": "https://github.com/facelessuser/sublime-markdown-popups"
+                "repo": "sublime-markdown-popups",
+                "user": "facelessuser"
             }
         },
         "pymdownx.extrarawhtml",
