@@ -23,6 +23,8 @@ import sys
 from . import plantuml
 this = sys.modules[__name__]
 
+HTML_SHEET_SUPPORT = int(sublime.version()) >= 4065
+
 TEST_MD = "Packages/mdpopup_test/test.md"
 TEST_UML_MD = "Packages/mdpopup_test/test_uml.md"
 
@@ -69,10 +71,15 @@ def clear_cache():
 
 def menu(fmatter, md_file):
     """Show menu allowing you to select a test."""
-    tests = (
+    tests = [
         "Popup Format",
         "Phantom Format"
-    )
+    ]
+
+    if HTML_SHEET_SUPPORT:
+        tests.append("Sheet Format")
+
+    tests = tuple(tests)
 
     def run_test(value, fm, md):
         """Run the test."""
@@ -86,14 +93,18 @@ def menu(fmatter, md_file):
 
 def on_close_popup(href):
     """Close the popup."""
-    view = active_view()
-    mdpopups.hide_popup(view)
+
+    if href == '#':
+        view = active_view()
+        mdpopups.hide_popup(view)
 
 
 def on_close_phantom(href):
     """Close all phantoms."""
-    view = active_view()
-    mdpopups.erase_phantoms(view, 'mdpopups_test')
+
+    if href == '#':
+        view = active_view()
+        mdpopups.erase_phantoms(view, 'mdpopups_test')
 
 
 def show_popup(text):
@@ -148,3 +159,41 @@ class MdpopupsTestUmlCommand(sublime_plugin.TextCommand):
         """Run command."""
 
         menu(frontmatter_uml, TEST_UML_MD)
+
+
+if HTML_SHEET_SUPPORT:
+    def show_sheet(text):
+        """Show the sheet."""
+
+        clear_cache()
+        close = '\n[close](#){: .btn .btn-small .btn-info}\n'
+        window = sublime.active_window()
+        mdpopups.new_html_sheet(
+            window,
+            'Sheet Test',
+            text + close,
+            cmd='mdpopups_test_sheet_url',
+            args={'wid': window.window_id},
+            wrapper_class='mdpopups-test'
+        )
+
+    def mdpopups_sheet_format_test(fm, md):
+        """Test sheet."""
+
+        show_sheet(mdpopups.format_frontmatter(fm) + sublime.load_resource(md))
+
+    class MdpopupsTestSheetUrlCommand(sublime_plugin.ApplicationCommand):
+        """Url handle command."""
+
+        def run(self, **kwargs):
+            """Command?"""
+
+            sheet = None
+            window = sublime.active_window()
+            if window is not None:
+                group = window.active_group()
+                if group is not None:
+                    sheet = window.active_sheet_in_group(group)
+            if sheet is not None:
+                if kwargs['url'] == '#':
+                    window.run_command('close_file')
