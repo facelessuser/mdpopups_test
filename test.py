@@ -23,7 +23,7 @@ import sys
 from . import plantuml
 this = sys.modules[__name__]
 
-HTML_SHEET_SUPPORT = int(sublime.version()) >= 4065
+HTML_SHEET_SUPPORT = int(sublime.version()) >= 4074
 
 TEST_MD = "Packages/mdpopup_test/test.md"
 TEST_UML_MD = "Packages/mdpopup_test/test_uml.md"
@@ -166,14 +166,12 @@ if HTML_SHEET_SUPPORT:
         """Show the sheet."""
 
         clear_cache()
-        close = '\n[close](#){: .btn .btn-small .btn-info}\n'
+        close = '\n[close](subl:mdpopups_test_sheet_url){: .btn .btn-small .btn-info}\n'
         window = sublime.active_window()
         mdpopups.new_html_sheet(
             window,
             'Sheet Test',
             text + close,
-            cmd='mdpopups_test_sheet_url',
-            args={'wid': window.window_id},
             wrapper_class='mdpopups-test'
         )
 
@@ -195,5 +193,4 @@ if HTML_SHEET_SUPPORT:
                 if group is not None:
                     sheet = window.active_sheet_in_group(group)
             if sheet is not None:
-                if kwargs['url'] == '#':
-                    window.run_command('close_file')
+                window.run_command('close_file')
