@@ -33,7 +33,6 @@ frontmatter = {
         "markdown.extensions.admonition",
         "markdown.extensions.attr_list",
         "markdown.extensions.def_list",
-        "markdown.extensions.nl2br",
         # Smart quotes always have corner cases that annoy me, so don't bother with them.
         {"markdown.extensions.smarty": {"smart_quotes": False}},
         "pymdownx.betterem",
@@ -120,7 +119,22 @@ def show_popup(text):
     )
 
 
-def show_phantom(text):
+def show_source(fm, text):
+    """Show content."""
+
+    clear_cache()
+    view = active_view()
+    region = view.visible_region()
+    html = mdpopups.md2html(active_view(), mdpopups.format_frontmatter(fm) + sublime.load_resource(text))
+    content = mdpopups.syntax_highlight(active_view(), html, 'html')
+    close = '\n[close](#){: .btn .btn-small .btn-info}\n'
+    mdpopups.show_popup(
+        active_view(), mdpopups.format_frontmatter(fm) + content + close, location=region.a, on_navigate=on_close_popup,
+        max_height=650, max_width=600, wrapper_class='mdpopups-test',
+        css='div.mdpopups-test { padding: 0.5rem; }'
+    )
+
+def show_phantom(fm, text):
     """Show the phantom."""
     clear_cache()
     close = '\n[close](#){: .btn .btn-small .btn-info}\n'
@@ -144,6 +158,15 @@ def mdpopups_phantom_format_test(fm, md):
     show_phantom(mdpopups.format_frontmatter(fm) + sublime.load_resource(md))
 
 
+class MdpopupsTestSourceCommand(sublime_plugin.TextCommand):
+    """Test command."""
+
+    def run(self, edit):
+        """Run command."""
+
+        show_source(frontmatter, TEST_MD)
+
+
 class MdpopupsTestCommand(sublime_plugin.TextCommand):
     """Test command."""
 
@@ -151,6 +174,7 @@ class MdpopupsTestCommand(sublime_plugin.TextCommand):
         """Run command."""
 
         menu(frontmatter, TEST_MD)
+
 
 class MdpopupsTestUmlCommand(sublime_plugin.TextCommand):
     """Test UML command."""

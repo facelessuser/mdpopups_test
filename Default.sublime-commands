@@ -6,5 +6,9 @@
     {
         "caption": "Mdpopups: Test UML",
         "command": "mdpopups_test_uml"
+    },
+    {
+        "caption": "Mdpopups: Show Source",
+        "command": "mdpopups_test_source"
     }
 ]
