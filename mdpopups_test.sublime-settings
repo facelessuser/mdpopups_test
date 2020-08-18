@@ -1,0 +1,7 @@
+{
+    // Syntax to use for new test file
+    "markdown_syntax": "Packages/Markdown/Markdown.sublime-syntax",
+
+    // Syntax to use for HTML output
+    "html_syntax": "Packages/HTML/HTML.sublime-syntax"
+}

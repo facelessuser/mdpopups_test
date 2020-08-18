@@ -4,11 +4,14 @@
         "command": "mdpopups_test"
     },
     {
-        "caption": "Mdpopups: Test UML",
-        "command": "mdpopups_test_uml"
+        "caption": "Mdpopups: Test Current View",
+        "command": "mdpopups_test",
+        "args": {
+            "view": true
+        }
     },
     {
-        "caption": "Mdpopups: Show Source",
-        "command": "mdpopups_test_source"
+        "caption": "Mdpopups: Create Test File",
+        "command": "mdpopups_create_default_view"
     }
 ]
