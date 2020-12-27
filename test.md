@@ -120,7 +120,7 @@ import awesome
 ## Admonition
 
 !!! panel-other "Normal"
-    Testing admontions.
+    Testing admonitions.
 
     ```python
     import test
@@ -132,7 +132,7 @@ import awesome
     ```
 
 !!! panel-success "Success"
-    Testing admontions.
+    Testing admonitions.
 
     ```python
     import test
@@ -144,7 +144,7 @@ import awesome
     ```
 
 !!! panel-warning "Warning"
-    Testing admontions.
+    Testing admonitions.
 
     ```python
     import test
@@ -156,7 +156,7 @@ import awesome
     ```
 
 !!! panel-error "Error"
-    Testing admontions.
+    Testing admonitions.
 
     ```python
     import test
@@ -168,7 +168,7 @@ import awesome
     ```
 
 !!! panel-info "Info"
-    Testing admontions.
+    Testing admonitions.
 
     ```python
     import test
