@@ -34,7 +34,7 @@ FRONTMATTER = {
                 "user": "facelessuser"
             }
         },
-        "pymdownx.extrarawhtml",
+        "markdown.extensions.md_in_html",
         "pymdownx.keys",
         {"pymdownx.escapeall": {"hardbreak": True, "nbsp": True}},
         # Sublime doesn't support superscript, so no ordinal numbers
