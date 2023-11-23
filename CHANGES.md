@@ -1,3 +1,7 @@
+## 1.1.1
+
+- **FIX**: Fix sheet URL handler.
+
 ## 1.1.0
 
 - **NEW**: Drop UML specific test.
