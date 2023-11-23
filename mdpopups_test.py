@@ -16,7 +16,6 @@ HTML_SHEET_SUPPORT = int(sublime.version()) >= 4074
 
 TEST_MD = "Packages/mdpopups_test/test.md"
 CLOSE_BUTTON = '\n\n<p>\n<a href="#" class="btn btn-small btn-info">close</a>\n</p>'
-CLOSE_SHEET_BUTTON = '\n\n<p>\n<a href="subl:mdpopups_test_sheet_url" class="btn btn-small btn-info">close</a>\n</p>'
 
 FRONTMATTER = {
     "allow_code_wrap": False,
@@ -239,7 +238,7 @@ if HTML_SHEET_SUPPORT:
         mdpopups.new_html_sheet(
             window,
             'Sheet Test',
-            text + CLOSE_SHEET_BUTTON,
+            text + close,
             wrapper_class='mdpopups-test'
         )
 
@@ -256,17 +255,16 @@ if HTML_SHEET_SUPPORT:
 
         show_sheet(frontmatter + content)
 
-    class MdpopupsTestSheetUrlCommand(sublime_plugin.ApplicationCommand):
+    class MdpopupsTestSheetUrlCommand(sublime_plugin.WindowCommand):
         """Url handle command."""
 
         def run(self, **kwargs):
             """Command?"""
 
             sheet = None
-            window = sublime.active_window()
-            if window is not None:
-                group = window.active_group()
+            if self.window is not None:
+                group = self.window.active_group()
                 if group is not None:
-                    sheet = window.active_sheet_in_group(group)
+                    sheet = self.window.active_sheet_in_group(group)
             if sheet is not None:
-                window.run_command('close_file')
+                self.window.run_command('close_file')
