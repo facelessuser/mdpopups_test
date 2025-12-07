@@ -6,13 +6,19 @@ A plugin designed to test MdPopups.
 
 ## Usage
 
-- Run command `Mdpopups: Test` and choose either popup, phantom, HTML Sheet, or HTML output. This demonstrates basic
-  formatting. HTML Sheet is ST4 specific.
+-   Run command `Mdpopups: Test` and choose either popup, phantom, HTML Sheet, or HTML output. This demonstrates basic
+    rendering using Python Markdown.
 
-- Run command `Mdpopups: Test Current View` and choose either popup, phantom, HTML Sheet, or HTML output. This will
-  parse the current view as the Markdown source.
+-   Run command `Mdpopups: Test (CommonMark)` and choose either popup, phantom, HTML Sheet, or HTML output. This
+    demonstrates basic rendering using Marko, a CommonMark parser.
 
-- If you'd like to start with a view with the default frontmatter, run `Mdpopups: Create Test File`.
+-   If you'd like to start with a view with the default frontmatter, run `Mdpopups: Create Test File`.
+
+-   If you'd like to start with a view with the default CommonMark frontmatter, run
+    `Mdpopups: Create Test File (CommonMark)`.
+
+-   Run command `Mdpopups: Test Current View` and choose either popup, phantom, HTML Sheet, or HTML output. This will
+    parse the current view as the Markdown source.
 
 ## Settings
 
