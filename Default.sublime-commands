@@ -4,6 +4,13 @@
         "command": "mdpopups_test"
     },
     {
+        "caption": "Mdpopups: Test (CommonMark)",
+        "command": "mdpopups_test",
+        "args": {
+            "commonmark": true
+        }
+    },
+    {
         "caption": "Mdpopups: Test Current View",
         "command": "mdpopups_test",
         "args": {
@@ -13,5 +20,12 @@
     {
         "caption": "Mdpopups: Create Test File",
         "command": "mdpopups_create_default_view"
+    },
+    {
+        "caption": "Mdpopups: Create Test File (CommonMark)",
+        "command": "mdpopups_create_default_view",
+        "args": {
+            "commonmark": true
+        }
     }
 ]

@@ -12,13 +12,14 @@ this = sys.modules[__name__]
 END_YAML = re.compile(r'\.{3}\r?\n\Z')
 
 SETTINGS = "Packages/mdpopups_test/mdpopups_test.sublime-settings"
-HTML_SHEET_SUPPORT = int(sublime.version()) >= 4074
 
 TEST_MD = "Packages/mdpopups_test/test.md"
+TEST_COMMON_MD = "Packages/mdpopups_test/commonmark.md"
 CLOSE_BUTTON = '\n\n<p>\n<a href="#" class="btn btn-small btn-info">close</a>\n</p>'
 
 FRONTMATTER = {
     "allow_code_wrap": False,
+    "markdown_parser": "markdown",
     "markdown_extensions": [
         "markdown.extensions.admonition",
         "markdown.extensions.attr_list",
@@ -33,11 +34,32 @@ FRONTMATTER = {
                 "user": "facelessuser"
             }
         },
+        {"markdown.extensions.smarty": {"smart_quotes": False}},
+        {
+            "pymdownx.caret": {
+                "superscript": False
+            }
+        },
+        {
+            "pymdownx.tilde": {
+                "subscript": False
+            }
+        },
+        "pymdownx.blocks.admonition",
+        "pymdownx.saneheaders",
         "markdown.extensions.md_in_html",
         "pymdownx.keys",
         {"pymdownx.escapeall": {"hardbreak": True, "nbsp": True}},
         # Sublime doesn't support superscript, so no ordinal numbers
         {"pymdownx.smartsymbols": {"ordinal_numbers": False}}
+    ]
+}
+
+FRONTMATTER_COMMON = {
+    "allow_code_wrap": False,
+    "markdown_parser": "marko",
+    "markdown_extensions": [
+        "gfm"
     ]
 }
 
@@ -52,17 +74,14 @@ def clear_cache():
     mdpopups.clear_cache()
 
 
-def menu(fmatter, md_file):
+def menu(fmatter, md_file, commonmark=False):
     """Show menu allowing you to select a test."""
     tests = [
         "Popup Format",
-        "Phantom Format"
+        "Phantom Format",
+        "Sheet Format",
+        "HTML Output"
     ]
-
-    if HTML_SHEET_SUPPORT:
-        tests.append("Sheet Format")
-
-    tests.append('HTML Output')
 
     tests = tuple(tests)
 
@@ -177,24 +196,12 @@ def mdpopups_html_output_test(fm, md):
 class MdpopupsTestCommand(sublime_plugin.TextCommand):
     """Test command."""
 
-    def run(self, edit, view=False):
+    def run(self, edit, view=False, commonmark=False):
         """Run command."""
 
         menu(
-            FRONTMATTER if not view else None,
-            TEST_MD if not view else None
-        )
-
-
-class MdpopupsTestUmlCommand(sublime_plugin.TextCommand):
-    """Test UML command."""
-
-    def run(self, edit):
-        """Run command."""
-
-        menu(
-            FRONTMATTER_UML,
-            TEST_UML_MD
+            (FRONTMATTER if not commonmark else FRONTMATTER_COMMON)if not view else None,
+            (TEST_MD if not commonmark else TEST_COMMON_MD) if not view else None
         )
 
 
@@ -216,55 +223,65 @@ class MdpopupsInsertPayloadCommand(sublime_plugin.TextCommand):
 class MdpopupsCreateDefaultViewCommand(sublime_plugin.WindowCommand):
     """Create default view."""
 
-    def run(self):
+    def run(self, commonmark):
         """"Run command."""
 
         view = self.window.new_file()
         MdpopupsInsertPayloadCommand.syntax = sublime.load_settings(SETTINGS).get(
             'markdown_syntax', "Packages/Markdown/Markdown.sublime-syntax"
         )
-        MdpopupsInsertPayloadCommand.payload = END_YAML.sub('---\n', mdpopups.format_frontmatter(FRONTMATTER))
+        if commonmark:
+            MdpopupsInsertPayloadCommand.payload = END_YAML.sub(
+                '---\n',
+                mdpopups.format_frontmatter(FRONTMATTER_COMMON)
+            )
+        else:
+            MdpopupsInsertPayloadCommand.payload = END_YAML.sub(
+                '---\n',
+                mdpopups.format_frontmatter(FRONTMATTER)
+            )
         MdpopupsInsertPayloadCommand.buffer_name = "MdPopups Test File.md"
         view.run_command('mdpopups_insert_payload')
 
 
-if HTML_SHEET_SUPPORT:
-    def show_sheet(text):
-        """Show the sheet."""
+def show_sheet(text):
+    """Show the sheet."""
 
-        clear_cache()
-        close = '\n[close](subl:mdpopups_test_sheet_url){: .btn .btn-small .btn-info}\n'
-        window = sublime.active_window()
-        mdpopups.new_html_sheet(
-            window,
-            'Sheet Test',
-            text + close,
-            wrapper_class='mdpopups-test'
-        )
+    clear_cache()
+    close = '\n[close](subl:mdpopups_test_sheet_url){: .btn .btn-small .btn-info}\n'
+    window = sublime.active_window()
+    mdpopups.new_html_sheet(
+        window,
+        'Sheet Test',
+        text + close,
+        wrapper_class='mdpopups-test'
+    )
 
-    def mdpopups_sheet_format_test(fm, md):
-        """Test sheet."""
 
-        if md is None:
-            view = active_view()
-            content = view.substr(sublime.Region(0, view.size()))
-            frontmatter = ''
-        else:
-            content = sublime.load_resource(md)
-            frontmatter = mdpopups.format_frontmatter(fm)
+def mdpopups_sheet_format_test(fm, md):
+    """Test sheet."""
 
-        show_sheet(frontmatter + content)
+    if md is None:
+        view = active_view()
+        content = view.substr(sublime.Region(0, view.size()))
+        frontmatter = ''
+    else:
+        content = sublime.load_resource(md)
+        frontmatter = mdpopups.format_frontmatter(fm)
 
-    class MdpopupsTestSheetUrlCommand(sublime_plugin.WindowCommand):
-        """Url handle command."""
+    show_sheet(frontmatter + content)
 
-        def run(self, **kwargs):
-            """Command?"""
 
-            sheet = None
-            if self.window is not None:
-                group = self.window.active_group()
-                if group is not None:
-                    sheet = self.window.active_sheet_in_group(group)
-            if sheet is not None:
-                self.window.run_command('close_file')
+class MdpopupsTestSheetUrlCommand(sublime_plugin.WindowCommand):
+    """Url handle command."""
+
+    def run(self, **kwargs):
+        """Command?"""
+
+        sheet = None
+        if self.window is not None:
+            group = self.window.active_group()
+            if group is not None:
+                sheet = self.window.active_sheet_in_group(group)
+        if sheet is not None:
+            self.window.run_command('close_file')

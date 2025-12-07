@@ -31,7 +31,11 @@ Inline *italic*.
 
 Inline `code`.
 
-Inline `#!python import code`
+Inline `#!python import code`.
+
+Inline ~~delete~~.
+
+Inline ^^insert^^.
 
 [mdpopups link](https://github.com/facelessuser/sublime-markdown-popups)
 
@@ -80,25 +84,25 @@ Apple
 
 ## Normal Lists
 
-- Fruit
-    - Apples
-    - Bannanas
-    - Oranges
-    - Grapes
+-   Fruit
+    -   Apples
+    -   Bannanas
+    -   Oranges
+    -   Grapes
 
-1. Meat
-    1. Chicken
-    2. Pork
-    3. Beef
+1.  Meat
+    1.  Chicken
+    2.  Pork
+    3.  Beef
 
-1. Lists With Paragraphs
-    1. item 1
+1.  Lists With Paragraphs
+    1.  item 1
 
         More from Item 1.
 
-    2. item 2
+    2.  item 2
 
-    3. item 3
+    3.  item 3
 
 ## Blocks
 
@@ -119,62 +123,80 @@ import awesome
 
 ## Admonition
 
-!!! panel-other "Normal"
-    Testing admonitions.
+/// admonition | Normal
+Testing admonitions.
 
-    ```python
-    import test
+```python
+import test
 
-    string = """Lorem  ipsum dolor sit amet, consectetur
-    adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Ut enim ad minim 
-    laboris nisi ut aliquip ex ea commodo consequat..."""
-    ```
+string = """Lorem  ipsum dolor sit amet, consectetur
+adipiscing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Ut enim ad minim 
+laboris nisi ut aliquip ex ea commodo consequat..."""
+```
+///
 
-!!! panel-success "Success"
-    Testing admonitions.
+/// note
+Testing admonitions.
 
-    ```python
-    import test
+```python
+import test
 
-    string = """Lorem  ipsum dolor sit amet, consectetur
-    adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Ut enim ad minim 
-    laboris nisi ut aliquip ex ea commodo consequat..."""
-    ```
+string = """Lorem  ipsum dolor sit amet, consectetur
+adipiscing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Ut enim ad minim 
+laboris nisi ut aliquip ex ea commodo consequat..."""
+```
+///
 
-!!! panel-warning "Warning"
-    Testing admonitions.
+/// tip
+Testing admonitions.
 
-    ```python
-    import test
+```python
+import test
 
-    string = """Lorem  ipsum dolor sit amet, consectetur
-    adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Ut enim ad minim 
-    laboris nisi ut aliquip ex ea commodo consequat..."""
-    ```
+string = """Lorem  ipsum dolor sit amet, consectetur
+adipiscing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Ut enim ad minim 
+laboris nisi ut aliquip ex ea commodo consequat..."""
+```
+///
 
-!!! panel-error "Error"
-    Testing admonitions.
+/// warning
+Testing admonitions.
 
-    ```python
-    import test
+```python
+import test
 
-    string = """Lorem  ipsum dolor sit amet, consectetur
-    adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Ut enim ad minim 
-    laboris nisi ut aliquip ex ea commodo consequat..."""
-    ```
+string = """Lorem  ipsum dolor sit amet, consectetur
+adipiscing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Ut enim ad minim 
+laboris nisi ut aliquip ex ea commodo consequat..."""
+```
+///
 
-!!! panel-info "Info"
-    Testing admonitions.
+/// caution
+Testing admonitions.
 
-    ```python
-    import test
+```python
+import test
 
-    string = """Lorem  ipsum dolor sit amet, consectetur
-    adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Ut enim ad minim 
-    laboris nisi ut aliquip ex ea commodo consequat..."""
-    ```
+string = """Lorem  ipsum dolor sit amet, consectetur
+adipiscing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Ut enim ad minim 
+laboris nisi ut aliquip ex ea commodo consequat..."""
+```
+///
+
+/// important
+Testing admonitions.
+
+```python
+import test
+
+string = """Lorem  ipsum dolor sit amet, consectetur
+adipiscing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Ut enim ad minim 
+laboris nisi ut aliquip ex ea commodo consequat..."""
+```
+///
