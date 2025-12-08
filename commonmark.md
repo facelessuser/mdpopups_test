@@ -46,6 +46,8 @@ Inline ~~delete~~.
     -   Oranges
     -   Grapes
 
+## Ordered Lists
+
 1.  Meat
     1.  Chicken
     2.  Pork

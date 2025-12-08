@@ -1,3 +1,7 @@
+## 2.0.1
+
+-   **FIX**: Update tests.
+
 ## 2.0.0
 
 -   **NEW**: Require Python 3.13.
